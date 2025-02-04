@@ -7,8 +7,8 @@ function ToDoList(){
 
     function handleInputChange(event){
         setNewTask(event.target.value);
-
     }
+    
     function handleInputKeyPress(event){
         if(event.key==="Enter"){
             addTask();
@@ -19,24 +19,20 @@ function ToDoList(){
             setTasks(t=>[...t,newTask]);
             setNewTask("");    
         }
-        
-
     }
 
     function deleteTask(index){
         const updatedTasks=tasks.filter((_,i)=>i!==index);
         setTasks(updatedTasks);
-
     }
 
     function moveTaskUp(index){
         if(index>0){
             const updatedTasks=[...tasks];
             [updatedTasks[index],updatedTasks[index-1]]=
-            [updatedTasks[index-1],updatedTasks[index]];
+            [updatedTasks[index-1],updatedTasks[index]];  //array destructuring is used here
             setTasks(updatedTasks);
         }
-
     }
 
     function moveTaskDown(index){
@@ -46,7 +42,6 @@ function ToDoList(){
             [updatedTasks[index+1],updatedTasks[index]];
             setTasks(updatedTasks);
         }
-
     }
     
     return(<div className="To-do-list">
